@@ -43,7 +43,7 @@ class BaseModbusClient(ModbusClientMixin):
         if isinstance(self.framer, ModbusSocketFramer):
             self.transaction = DictTransactionManager(self, **kwargs)
         else:
-            self.transaction = LatestTransactionManager(self, **kwargs)
+            self.transaction = FifoTransactionManager(self, **kwargs)
         self._debug = False
         self._debugfd = None
 
